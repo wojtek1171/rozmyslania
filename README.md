@@ -1,6 +1,24 @@
-# Rozmyslania (q-proj1)
+# Rozmyślania
 
-Desc
+Rozmyślania Marka Aureliusza w formie aplikacji mobilnej. Wersja Beta.
+
+Aplikacja stworzona za pomocą frameworka Cordova, co umożliwia zbudowanie pliku instalacyjnego na platfromy:
+
+- Android
+- iOS
+- Electron
+
+Aplikacja aktualnie dostępna tylko w języku polskim 🇵🇱
+
+# Zrzuty ekranu
+
+![screen0](/doc/imgs/screen0.JPG)
+![screen1](/doc/imgs/screen1.JPG)
+![screen2](/doc/imgs/screen2.JPG)
+![screen3](/doc/imgs/screen3.JPG)
+![screen4](/doc/imgs/screen4.JPG)
+
+# For developers
 
 ## Install the dependencies
 
@@ -14,6 +32,8 @@ npm install
 
 ```bash
 quasar dev
+# or
+npx quasar dev
 ```
 
 ### Lint the files
