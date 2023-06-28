@@ -1,0 +1,10 @@
+// app global css in SCSS form
+
+@font-face {
+  font-family: quicksand;
+  src: url(./fonts/quicksand.woff);
+}
+
+#background {
+  background-color: rgba(0, 0, 0, 0.5);
+}
