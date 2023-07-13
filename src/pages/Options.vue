@@ -5,7 +5,7 @@
     <q-card class="my-card q-px-xs bordered text-white" id="background">
       <q-card-section class="q-pt-xs">
         <q-separator dark />
-
+        <!--
         <div class="q-py-xs text-bold text-subtitle1">Powiadomienia</div>
 
         <q-toggle color="blue" dark v-model="notificationsSetup.enabled" />
@@ -47,7 +47,7 @@
         </div>
 
         <q-separator dark />
-
+        -->
         <div class="q-py-md">
           <q-btn color="grey-9" size="md" icon="delete" @click="confirmChecked = true">Wyczyść przeczytane</q-btn>
         </div>
@@ -84,6 +84,8 @@
             </q-card-actions>
           </q-card>
         </q-dialog>
+        <q-btn flat @click="perm()" label="Perm" color="primary" v-close-popup />
+        <q-btn flat @click="testNot()" label="Perm" color="primary" v-close-popup />
       </q-card-section>
     </q-card>
   </q-page>
@@ -99,6 +101,10 @@ export default {
       enabled: false,
       time: '20:00',
     };
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
 
     const quotes: any[] = JSON.parse(JSON.stringify(data));
 
@@ -128,55 +134,71 @@ export default {
     deleteChecked() {
       localStorage.setItem('checked', '[]');
     },
-    scheduleNotification() {
-      const timeSetup = this.notificationsSetup.time.split(':');
-      // eslint-disable-next-line @typescript-eslint/no-this-alias
-      const self = this;
-      cordova.plugins.notification.local.cancelAll();
-
-      let initialRandom = this.getRandom();
-      let idsForNextWeek = [];
-
-      let i = 1;
-      while (i < 8) {
-        idsForNextWeek.push(initialRandom);
-        initialRandom++;
-        i++;
+    perm() {
+      if (!('Notification' in window)) {
+        console.log('This browser does not support notifications.');
+      } else {
+        Notification.requestPermission().then((permission) => {
+          console.log(permission);
+        });
       }
-
-      i = 0;
-
-      let triggerTime = new Date();
-      triggerTime.setHours(+timeSetup[0]);
-      triggerTime.setMinutes(+timeSetup[1]);
-      triggerTime.setSeconds(0);
-      let scheduledArray = [];
-
-      idsForNextWeek.forEach((id) => {
-        const notification = {
-          id: id,
-          title: 'Czeka na Ciebie nieprzeczytana myśl!',
-          text: this.quotes[id - 1].text.substring(0, 50) + '...',
-          at: new Date(triggerTime),
-        };
-        scheduledArray.push(notification);
-        triggerTime.setDate(triggerTime.getDate() + 1);
-      });
-
-      scheduledArray = scheduledArray.filter((noti) => !this.checked.has(noti.id));
-
-      document.addEventListener(
-        'deviceready',
-        function () {
-          cordova.plugins.notification.local.schedule(scheduledArray);
-
-          cordova.plugins.notification.local.on('click', function () {
-            self.$router.push('/daily');
-          });
-        },
-        false
-      );
     },
+    testNot() {
+      navigator.serviceWorker.ready.then((registration) => {
+        registration.showNotification('Testing', {
+          body: 'Buzz! Buzz!',
+        });
+      });
+    },
+    // scheduleNotification() {
+    //   const timeSetup = this.notificationsSetup.time.split(':');
+    //   // eslint-disable-next-line @typescript-eslint/no-this-alias
+    //   const self = this;
+    //   cordova.plugins.notification.local.cancelAll();
+
+    //   let initialRandom = this.getRandom();
+    //   let idsForNextWeek = [];
+
+    //   let i = 1;
+    //   while (i < 8) {
+    //     idsForNextWeek.push(initialRandom);
+    //     initialRandom++;
+    //     i++;
+    //   }
+
+    //   i = 0;
+
+    //   let triggerTime = new Date();
+    //   triggerTime.setHours(+timeSetup[0]);
+    //   triggerTime.setMinutes(+timeSetup[1]);
+    //   triggerTime.setSeconds(0);
+    //   let scheduledArray = [];
+
+    //   idsForNextWeek.forEach((id) => {
+    //     const notification = {
+    //       id: id,
+    //       title: 'Czeka na Ciebie nieprzeczytana myśl!',
+    //       text: this.quotes[id - 1].text.substring(0, 50) + '...',
+    //       at: new Date(triggerTime),
+    //     };
+    //     scheduledArray.push(notification);
+    //     triggerTime.setDate(triggerTime.getDate() + 1);
+    //   });
+
+    //   scheduledArray = scheduledArray.filter((noti) => !this.checked.has(noti.id));
+
+    //   document.addEventListener(
+    //     'deviceready',
+    //     function () {
+    //       cordova.plugins.notification.local.schedule(scheduledArray);
+
+    //       cordova.plugins.notification.local.on('click', function () {
+    //         self.$router.push('/daily');
+    //       });
+    //     },
+    //     false
+    //   );
+    // },
     getRandom() {
       const now = new Date();
       const preRandom = now.getFullYear() + now.getMonth() + now.getDate();
@@ -191,9 +213,9 @@ export default {
       handler() {
         localStorage.setItem('notificationsSetup', JSON.stringify(this.notificationsSetup));
         if (this.notificationsSetup.enabled) {
-          this.scheduleNotification();
+          //this.scheduleNotification();
         } else {
-          cordova.plugins.notification.local.cancelAll();
+          //cordova.plugins.notification.local.cancelAll();
         }
       },
       deep: true,

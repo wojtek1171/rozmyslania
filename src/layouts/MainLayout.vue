@@ -146,7 +146,9 @@ export default defineComponent({
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: left bottom;
-  background-size: cover;
+  background-size: auto 80%;
+  display: flex;
+  justify-content: center;
 }
 
 .toolbar-title {
