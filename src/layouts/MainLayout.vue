@@ -84,7 +84,9 @@
     <q-page-container class="page">
       <router-view v-slot="{ Component }" @animEnter="getAnimEnter" @animLeave="getAnimLeave">
         <transition appear :enter-active-class="animationEnter" :leave-active-class="animationLeave" mode="out-in">
-          <component :is="Component" />
+          <q-page>
+            <component class="item" :is="Component" />
+          </q-page>
         </transition>
       </router-view>
     </q-page-container>
@@ -147,12 +149,17 @@ export default defineComponent({
   background-attachment: fixed;
   background-position: left bottom;
   background-size: auto 80%;
-  display: flex;
-  justify-content: center;
+  //background-size: cover;
+  webkit-background-size: cover;
 }
 
 .toolbar-title {
   font-family: 'quicksand';
+}
+
+.item {
+  max-width: 820px;
+  margin: auto;
 }
 
 #drawer {

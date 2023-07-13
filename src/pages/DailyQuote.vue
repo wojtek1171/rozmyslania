@@ -149,9 +149,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.page {
-  max-width: 800px;
-}
-</style>

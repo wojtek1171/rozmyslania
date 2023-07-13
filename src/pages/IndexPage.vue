@@ -1,5 +1,5 @@
 <template>
-  <q-page class="bg-black text-center">
+  <q-page class="bg-black text-center" id="page">
     <div class="text-h6 text-center text-white text-bold q-py-md">Marek Aureliusz</div>
     <div class="text-h4 text-center text-white text-bold">Rozmyślania</div>
     <div class="img-container">
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss">
-@media screen and (max-height: 550px) {
+@media screen and (max-height: 450px) {
   .img-container {
     display: none;
   }
@@ -49,5 +49,9 @@ export default {
   100% {
     opacity: 0;
   }
+}
+
+#page {
+  max-width: 100%;
 }
 </style>
