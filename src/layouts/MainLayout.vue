@@ -144,13 +144,14 @@ export default defineComponent({
 .page {
   font-family: 'quicksand';
   background-color: black;
-  background-image: url('../assets/marcus.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: left bottom;
-  background-size: auto 80%;
+  //background-image: url('../assets/marcus.jpg');
+  //background-repeat: no-repeat;
+  //background-attachment: fixed;
+  //background-position: left bottom;
+  //background-size: auto 80%;
   //background-size: cover;
-  webkit-background-size: cover;
+  //-webkit-background-size: auto 80%;
+  //-webkit-background-attachment: fixed;
 }
 
 .toolbar-title {
