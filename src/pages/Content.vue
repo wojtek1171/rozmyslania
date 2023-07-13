@@ -95,13 +95,13 @@ export default {
     scrollToTop() {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth',
+        behavior: 'instant',
       });
     },
     scrollToBottom() {
       window.scrollTo({
         top: document.body.scrollHeight,
-        behavior: 'smooth',
+        behavior: 'instant',
       });
     },
     onScroll(e) {

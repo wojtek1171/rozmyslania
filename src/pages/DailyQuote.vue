@@ -1,5 +1,5 @@
 <template>
-  <q-page class="page">
+  <q-page>
     <q-pull-to-refresh @refresh="refresh">
       <div class="q-pr-md q-pt-md text-white text-bold text-right">
         {{ daysOfWeek.get(date.getDay()) }}, {{ date.getDate() }} {{ months.get(date.getMonth()) }}
