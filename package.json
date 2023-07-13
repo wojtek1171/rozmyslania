@@ -1,7 +1,7 @@
 {
-  "name": "q-proj1",
+  "name": "rozmyslania",
   "version": "0.0.1",
-  "description": "Desc",
+  "description": "Mobilna wersja Rozmyślań Marka Aureliusza",
   "productName": "Rozmyslania",
   "author": "Wojtek",
   "private": true,

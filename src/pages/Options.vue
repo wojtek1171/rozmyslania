@@ -48,12 +48,47 @@
 
         <q-separator dark />
         -->
+
+        <div class="q-pb-md">
+          <q-banner class="bg-grey-9 text-white">
+            W celu zachowania postępów lub przenoszenia je na inne urządzenie, możesz pobrać plik JSON ze swoimi danymi.
+          </q-banner>
+        </div>
+
+        <div class="q-py-xs text-bold text-subtitle1">Eksportuj postęp do pliku JSON</div>
         <div class="q-py-md">
-          <q-btn color="grey-9" size="md" icon="delete" @click="confirmChecked = true">Wyczyść przeczytane</q-btn>
+          <q-btn color="grey-9" size="md" icon="cloud_download" label="Pobierz" @click="download()"></q-btn>
         </div>
         <q-separator dark />
+        <div class="q-py-xs text-bold text-subtitle1">Importuj postęp z pliku JSON</div>
+        <q-file dark color="grey-9" filled v-model="file" label="Wybierz plik" accept=".json">
+          <template v-slot:prepend>
+            <q-icon name="cloud_upload" />
+          </template>
+        </q-file>
         <div class="q-py-md">
-          <q-btn color="grey-9" size="md" icon="delete" @click="confirmFavourites = true">Wyczyść ulubione</q-btn>
+          <q-btn color="grey-9" size="md" icon="cloud_download" label="Import" @click="onUpload"></q-btn>
+        </div>
+
+        <q-separator dark />
+
+        <div class="q-py-md">
+          <q-btn
+            color="grey-9"
+            size="md"
+            icon="delete"
+            label="Wyczyść przeczytane"
+            @click="confirmChecked = true"
+          ></q-btn>
+        </div>
+        <div class="q-py-md">
+          <q-btn
+            color="grey-9"
+            size="md"
+            icon="delete"
+            label="Wyczyść ulubione"
+            @click="confirmFavourites = true"
+          ></q-btn>
         </div>
         <q-separator dark />
 
@@ -84,8 +119,6 @@
             </q-card-actions>
           </q-card>
         </q-dialog>
-        <q-btn flat @click="perm()" label="Perm" color="primary" v-close-popup />
-        <q-btn flat @click="testNot()" label="Perm" color="primary" v-close-popup />
       </q-card-section>
     </q-card>
   </q-page>
@@ -93,6 +126,8 @@
 
 <script lang="ts">
 import data from 'assets/quotes.json';
+import { ref } from 'vue';
+import { exportFile } from 'quasar';
 
 export default {
   name: 'OptionsPage',
@@ -101,10 +136,6 @@ export default {
       enabled: false,
       time: '20:00',
     };
-
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
-    }
 
     const quotes: any[] = JSON.parse(JSON.stringify(data));
 
@@ -125,6 +156,7 @@ export default {
       confirmChecked: false,
       checked,
       quotes,
+      file: ref(null),
     };
   },
   methods: {
@@ -134,21 +166,28 @@ export default {
     deleteChecked() {
       localStorage.setItem('checked', '[]');
     },
-    perm() {
-      if (!('Notification' in window)) {
-        console.log('This browser does not support notifications.');
-      } else {
-        Notification.requestPermission().then((permission) => {
-          console.log(permission);
-        });
-      }
+    download() {
+      const data = {
+        favourites: localStorage.favourites,
+        checked: localStorage.checked,
+      };
+      const now = new Date();
+      console.log(this.file);
+      exportFile(`rozmyslania-${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}.json`, JSON.stringify(data));
     },
-    testNot() {
-      navigator.serviceWorker.ready.then((registration) => {
-        registration.showNotification('Testing', {
-          body: 'Buzz! Buzz!',
-        });
-      });
+    onUpload() {
+      //console.log(file);
+      //console.log(this.file);
+
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const data = JSON.parse(e.target?.result);
+        console.log(data);
+        localStorage.setItem('favourites', data.favourites);
+        localStorage.setItem('checked', data.checked);
+      };
+      reader.readAsText(this.file);
     },
     // scheduleNotification() {
     //   const timeSetup = this.notificationsSetup.time.split(':');
