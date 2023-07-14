@@ -1,12 +1,9 @@
 # Rozmyślania
 
-Rozmyślania Marka Aureliusza w formie aplikacji mobilnej. Wersja Beta.
+Rozmyślania Marka Aureliusza w formie aplikacji.
 
-Aplikacja stworzona za pomocą frameworka Cordova, co umożliwia zbudowanie pliku instalacyjnego na platfromy:
-
-- Android
-- iOS
-- Electron
+Aplikacja została stworzona w technologii PWA (Progressive Web Application), dzięki czemu może być zainstalowana na urządzeniach mobilnych i desktopowych prosto z przeglądarki, z pominięciem Google Play i App Store'a.
+Po wejściu na [stronę aplikacji](https://rozmyslania.vercel.app/) Twoje urządzenie powinno dać Ci mozliwość 'dodać aplikację do ekranu początkowego' (ikona plusa na iOS) lub ją 'zainstalować' (odpowiednia informacja w przeglądarce na Android). Po instalacji aplikacja będzie działać nawet w trybie offline.
 
 Aplikacja aktualnie dostępna tylko w języku polskim 🇵🇱
 
@@ -18,7 +15,7 @@ Aplikacja aktualnie dostępna tylko w języku polskim 🇵🇱
 ![screen3](/doc/imgs/screen3.JPG)
 ![screen4](/doc/imgs/screen4.JPG)
 
-# For developers
+# Dla developerów
 
 ## Install the dependencies
 
@@ -55,9 +52,11 @@ npm run format
 ### Build the app for production
 
 ```bash
-quasar build
+quasar build -m pwa
 ```
 
-### Customize the configuration
+### Start the app
 
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+```bash
+quasar serve dist/pwa
+```

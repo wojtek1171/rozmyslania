@@ -146,12 +146,9 @@ export default defineComponent({
   background-color: black;
   background-image: url('../assets/marcus-corner.jpg');
   background-repeat: no-repeat;
-  //background-attachment: fixed;
   background-position: left bottom;
   background-size: auto 29vh;
-  //background-size: cover;
   -webkit-background-size: auto 29vh;
-  //-webkit-background-attachment: fixed;
 }
 
 .toolbar-title {

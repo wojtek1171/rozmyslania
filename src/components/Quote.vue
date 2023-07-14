@@ -46,7 +46,12 @@
       <q-btn v-if="isChecked" flat><q-icon name="check_box" @click="removeFromChecked(quote.qid)"></q-icon></q-btn>
       <q-btn v-else flat><q-icon name="check_box_outline_blank" @click="addToChecked(quote.qid)"></q-icon></q-btn>
 
-      <q-btn flat><q-icon name="content_copy" @click="copyToClipboard()"></q-icon></q-btn>
+      <q-btn flat @click="showing = true"
+        ><q-icon name="content_copy" @click="copyToClipboard()"></q-icon
+        ><q-popup-proxy :offset="[10, 10]">
+          <q-banner dense class="bg-grey-7 text-white"> <div>skopiowano treść do schowka</div> </q-banner>
+        </q-popup-proxy></q-btn
+      >
     </q-card-actions>
   </q-card>
   <!-- </q-page> -->
@@ -56,6 +61,7 @@
 import { defineComponent } from 'vue';
 import { copyToClipboard } from 'quasar';
 import chapters from 'components/chapters';
+import { ref } from 'vue';
 
 export default defineComponent({
   name: 'QuoteComponent',
@@ -80,6 +86,7 @@ export default defineComponent({
       checked,
       isChecked,
       testMsg: 'testing',
+      showing: ref(false),
     };
   },
   methods: {
@@ -109,7 +116,6 @@ export default defineComponent({
       this.checked.add(qid);
       localStorage.setItem('checked', JSON.stringify(Array.from(this.checked)));
       this.isChecked = !this.isChecked;
-      this.cancelNotification(qid);
     },
     removeFromChecked(qid: number) {
       if (localStorage.checked) {
@@ -147,13 +153,8 @@ export default defineComponent({
     },
     copyToClipboard() {
       copyToClipboard(this.quote.text);
-    },
-    shareQuote() {
-      const quote = this.quote.text;
-      //window.plugins.socialsharing.share(quote);
-    },
-    cancelNotification(qid: number) {
-      //cordova.plugins.notification.local.cancel(qid);
+      this.showing = true;
+      setTimeout(() => (this.showing = false), 1000);
     },
   },
 });
@@ -163,10 +164,6 @@ export default defineComponent({
 #tag-icon {
   max-width: 30px;
 }
-
-// #background {
-//   background-color: rgba(0, 0, 0, 0.5);
-// }
 
 .link {
   text-decoration: none;

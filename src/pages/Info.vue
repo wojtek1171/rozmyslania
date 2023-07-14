@@ -25,7 +25,10 @@
             Wszelkie uwagi o aplikacji, sugestie, informacje o błędach kieruj na:
           </div>
           <div class="q-pb-md">
-            <a class="link" href="mailto:tutaj.daj.email@gmail.com">tutaj.daj.email@gmail.com</a>
+            <a class="link" href="mailto:wojtek1171@proton.me">wojtek1171@proton.me</a>
+          </div>
+          <div class="q-pb-md">
+            <a class="link" href="https://github.com/wojtek1171/rozmyslania">github.com/wojtek1171/rozmyslania</a>
           </div>
           <q-separator dark />
           <div class="q-py-md text-bold text-white">
@@ -44,16 +47,18 @@
           <div class="text-h6 text-center">Prawa autorskie</div>
           <q-separator dark />
           <div class="q-py-md text-bold text-white">
-            Aplikacja oparta jest na treści zawartej w "Rozmyślaniach" Marka Aureliusza w tłumaczeniu M. Reitera (wyd.
-            Warszawa 1937). Wykorzystany tekst pochodzi z opracowania zrealizowanego w ramach projektu
-            <a class="link" href="https://wolnelektury.pl/katalog/lektura/rozmyslania-marek-aureliusz/"
-              >Wolne Lektury</a
-            >
+            Aplikacja oparta jest na treści zawartej w "<a
+              class="link"
+              href="https://wolnelektury.pl/katalog/lektura/rozmyslania-marek-aureliusz/"
+              >Rozmyślaniach</a
+            >" Marka Aureliusza w tłumaczeniu M. Reitera (wyd. Warszawa 1937). Wykorzystany tekst pochodzi z opracowania
+            zrealizowanego w ramach projektu
+            <a class="link" href="https://wolnelektury.pl">Wolne Lektury</a>
             przez Fundację Nowoczesna Polska.
           </div>
 
           <q-card-actions vertical>
-            <a href="https://wolnelektury.pl/katalog/lektura/rozmyslania-marek-aureliusz/">
+            <a href="https://wolnelektury.pl">
               <q-img class="img2" src="../assets/wolne-lektury-logo.png"></q-img>
             </a>
           </q-card-actions>
@@ -68,7 +73,7 @@
           </div>
 
           <q-card-actions vertical>
-            <a href="https://pl.wikisource.org/wiki/Rozmy%C5%9Blania_(Marek_Aureliusz)/ca%C5%82o%C5%9B%C4%87">
+            <a href="https://pl.wikisource.org">
               <q-img class="img1" src="../assets/wiki-logo.png"></q-img>
             </a>
           </q-card-actions>

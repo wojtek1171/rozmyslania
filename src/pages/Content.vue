@@ -33,14 +33,9 @@
       </span>
     </div>
 
-    <transition appear enter-active-class="animated slideInUp" leave-active-class="animated slideOutDown">
-      <q-page-sticky v-if="!showTop" position="bottom-left" :offset="[18, 18]">
-        <q-btn round color="grey-9" icon="keyboard_arrow_down" @click="scrollToBottom()" />
-      </q-page-sticky>
-      <q-page-sticky v-else position="bottom-left" :offset="[18, 18]">
-        <q-btn round color="grey-9" icon="keyboard_arrow_up" @click="scrollToTop()" />
-      </q-page-sticky>
-    </transition>
+    <q-page-sticky position="bottom-left" :offset="[18, 18]">
+      <q-btn round color="grey-9" icon="keyboard_arrow_up" @click="scrollToTop()" />
+    </q-page-sticky>
   </q-page>
 </template>
 
