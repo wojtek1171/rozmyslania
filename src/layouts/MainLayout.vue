@@ -47,7 +47,7 @@
           <q-item-section>
             <q-item-label
               >Ulubione
-              <q-chip dense size="md">{{ favourites.size }}</q-chip>
+              <q-chip dense size="md">{{ favouritesSize }}</q-chip>
             </q-item-label>
           </q-item-section>
         </q-item>
@@ -95,6 +95,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { triggerFavouritesChange } from 'src/components/favouritesChanged';
 
 export default defineComponent({
   name: 'MainLayout',
@@ -104,11 +105,14 @@ export default defineComponent({
   setup() {
     const leftDrawerOpen = ref(false);
 
+    const { favouritesSize } = triggerFavouritesChange();
+
     return {
       leftDrawerOpen,
       favourites: new Set(),
       animationEnter: 'animated fadeIn',
       animationLeave: 'animated fadeOut',
+      favouritesSize,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
@@ -130,7 +134,7 @@ export default defineComponent({
     leftDrawerOpen: {
       handler() {
         if (localStorage.favourites) {
-          this.favourites = new Set(JSON.parse(localStorage.favourites));
+          this.favouritesSize = new Set(JSON.parse(localStorage.favourites)).size;
         }
         this.animationEnter = 'animated fadeIn';
         this.animationLeave = 'animated fadeOut';

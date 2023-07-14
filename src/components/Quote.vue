@@ -62,6 +62,7 @@ import { defineComponent } from 'vue';
 import { copyToClipboard } from 'quasar';
 import chapters from 'components/chapters';
 import { ref } from 'vue';
+import { triggerFavouritesChange } from 'components/favouritesChanged';
 
 export default defineComponent({
   name: 'QuoteComponent',
@@ -79,6 +80,8 @@ export default defineComponent({
     let isFavourite = favourites.has(this.quote.qid);
     let isChecked = checked.has(this.quote.qid);
     const chaptersMap = chapters;
+
+    const { favouritesSize } = triggerFavouritesChange();
     return {
       chaptersMap,
       favourites,
@@ -87,6 +90,7 @@ export default defineComponent({
       isChecked,
       testMsg: 'testing',
       showing: ref(false),
+      favouritesSize,
     };
   },
   methods: {
@@ -98,6 +102,7 @@ export default defineComponent({
 
       localStorage.setItem('favourites', JSON.stringify(Array.from(this.favourites)));
       this.isFavourite = !this.isFavourite;
+      this.favouritesSize = this.favourites.size;
     },
     removeFromFavourites(qid: number) {
       if (localStorage.favourites) {
@@ -106,8 +111,8 @@ export default defineComponent({
       this.favourites.delete(qid);
 
       localStorage.setItem('favourites', JSON.stringify(Array.from(this.favourites)));
-
       this.isFavourite = !this.isFavourite;
+      this.favouritesSize = this.favourites.size;
     },
     addToChecked(qid: number) {
       if (localStorage.checked) {

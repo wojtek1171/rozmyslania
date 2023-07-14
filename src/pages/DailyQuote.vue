@@ -21,6 +21,7 @@ import months from 'components/months.ts';
 export default {
   name: 'DailyQuotePage',
   components: { Quote },
+  emits: ['favouritesSize'],
   data() {
     let date = new Date();
     const quotes: any[] = JSON.parse(JSON.stringify(data));
@@ -30,14 +31,18 @@ export default {
       checked = new Set(JSON.parse(localStorage.checked));
     }
 
-    function getRandom() {
-      const todayTimestamp = Math.floor(Date.now() / 86400000);
-      return (todayTimestamp % quotes.length) + 1;
+    function getTodayQuoteId() {
+      const oneDay = 24 * 60 * 60 * 1000;
+      const baseDate = new Date(2020, 0, 1);
+      const today = new Date();
+      const utcToday = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+      const utcBaseDate = Date.UTC(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate());
+      const diffDays = Math.floor(Math.abs(utcToday - utcBaseDate) / oneDay);
+      console.log(diffDays);
+      return (diffDays % quotes.length) + 1;
     }
 
-    let quote = quotes.filter((q) => q.qid === getRandom())[0];
-
-    let notificationsSetup;
+    let quote = quotes.filter((q) => q.qid === getTodayQuoteId())[0];
 
     return {
       quotes,
@@ -50,16 +55,21 @@ export default {
     };
   },
   methods: {
-    getRandom() {
-      const todayTimestamp = Math.floor(Date.now() / 86400000);
-      return (todayTimestamp % this.quotes.length) + 1;
+    getTodayQuoteId() {
+      const oneDay = 24 * 60 * 60 * 1000;
+      const baseDate = new Date(2020, 0, 1);
+      const today = new Date();
+      const utcToday = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+      const utcBaseDate = Date.UTC(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate());
+      const diffDays = Math.floor(Math.abs(utcToday - utcBaseDate) / oneDay);
+      return (diffDays % this.quotes.length) + 1;
     },
     refresh(done) {
       setTimeout(() => {
         let date = new Date();
         if (this.dayOfMonth !== date.getDate()) {
           this.date = date;
-          this.quote = this.quotes.filter((q) => q.qid === this.getRandom())[0];
+          this.quote = this.quotes.filter((q) => q.qid === this.getTodayQuoteId())[0];
         }
         done();
       }, 500);
@@ -73,7 +83,7 @@ export default {
       let date = new Date();
       if (self.dayOfMonth !== date.getDate()) {
         self.date = date;
-        self.quote = self.quotes.filter((q) => q.qid === self.getRandom())[0];
+        self.quote = self.quotes.filter((q) => q.qid === self.getTodayQuoteId())[0];
       }
     }
     document.addEventListener('resume', onResume, false);
