@@ -210,10 +210,7 @@ export default {
       this.filteredQuotes = filtered;
     },
     scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'instant',
-      });
+      document.getElementsByTagName('body')[0].scrollTo(0, 0);
     },
     getTag(tag: string) {
       this.filterCriteria.tagSearch = tag;

@@ -8,7 +8,8 @@
 
         <div class="q-pb-md">
           <q-banner class="bg-grey-9 text-white">
-            W celu zachowania postępów lub przenoszenia je na inne urządzenie, możesz pobrać plik JSON ze swoimi danymi.
+            Czyszczenie ciasteczek i danych witryny przez Twoją przeglądarkę może także usunąć postępy. W celu ich
+            zachowania lub przenoszenia na inne urządzenie, możesz pobrać plik JSON ze swoimi danymi.
           </q-banner>
         </div>
 

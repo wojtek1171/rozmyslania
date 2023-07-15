@@ -1,5 +1,6 @@
 <template>
   <q-page class="q-pb-xl">
+    <!-- <q-layout> -->
     <q-item-section class="text-h5 text-center text-white text-bold q-pt-lg"> Spis treści </q-item-section>
 
     <div class="q-pt-md text-center text-white text-bold">
@@ -36,6 +37,10 @@
     <q-page-sticky position="bottom-left" :offset="[18, 18]">
       <q-btn round color="grey-9" icon="keyboard_arrow_up" @click="scrollToTop()" />
     </q-page-sticky>
+    <!-- <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
+        <q-btn fab icon="keyboard_arrow_up" color="accent" />
+      </q-page-scroller> -->
+    <!-- </q-layout> -->
   </q-page>
 </template>
 
@@ -88,19 +93,17 @@ export default {
       return this.chaptersMap.get(chapter).length;
     },
     scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'instant',
-      });
+      // window.scrollTo({
+      //   top: 0,
+      //   behavior: 'instant',
+      // });
+      document.getElementsByTagName('body')[0].scrollTo(0, 0);
     },
     scrollToBottom() {
       window.scrollTo({
         top: document.body.scrollHeight,
         behavior: 'instant',
       });
-    },
-    onScroll(e) {
-      this.windowTop = window.top.scrollY;
     },
     emitAnim() {
       this.$emit('animEnter', 'animated slideInRight');
@@ -117,12 +120,6 @@ export default {
         }
       },
     },
-  },
-  mounted() {
-    window.addEventListener('scroll', this.onScroll);
-  },
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.onScroll);
   },
 };
 </script>

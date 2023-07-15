@@ -38,7 +38,6 @@ export default {
       const utcToday = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
       const utcBaseDate = Date.UTC(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate());
       const diffDays = Math.floor(Math.abs(utcToday - utcBaseDate) / oneDay);
-      console.log(diffDays);
       return (diffDays % quotes.length) + 1;
     }
 
