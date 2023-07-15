@@ -169,6 +169,10 @@ export default defineComponent({
 }
 
 body {
-  background: black;
+  background-color: black;
+}
+
+#copylAddress {
+  display: none !important;
 }
 </style>

@@ -93,11 +93,7 @@ export default {
       return this.chaptersMap.get(chapter).length;
     },
     scrollToTop() {
-      // window.scrollTo({
-      //   top: 0,
-      //   behavior: 'instant',
-      // });
-      document.getElementsByTagName('body')[0].scrollTo({
+      window.scrollTo({
         top: 0,
         behavior: 'smooth',
       });

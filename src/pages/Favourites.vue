@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     scrollToTop() {
-      document.getElementsByTagName('body')[0].scrollTo({
+      window.scrollTo({
         top: 0,
         behavior: 'smooth',
       });
