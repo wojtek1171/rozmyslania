@@ -168,14 +168,7 @@ export default defineComponent({
   font-family: 'quicksand';
 }
 
-html {
-  overflow: hidden;
-  height: 100%;
-}
-
 body {
   background: black;
-  height: 100%;
-  overflow: scroll;
 }
 </style>

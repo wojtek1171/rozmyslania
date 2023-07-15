@@ -51,17 +51,17 @@
     </div>
 
     <q-infinite-scroll @load="onLoad" :offset="250" ref="infiniteScroll">
-      <transition-group appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" mode="out-in">
-        <quote
-          class="q-pt-lg q-px-sm"
-          style="min-height: 50px"
-          v-for="item in items"
-          :key="item.qid"
-          :quote="item"
-          :searchPhrase="filterCriteria.textSearch"
-          @tag="getTag"
-        ></quote>
-      </transition-group>
+      <!-- <transition-group appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" mode="out-in"> -->
+      <quote
+        class="q-pt-lg q-px-sm"
+        style="min-height: 50px"
+        v-for="item in items"
+        :key="item.qid"
+        :quote="item"
+        :searchPhrase="filterCriteria.textSearch"
+        @tag="getTag"
+      ></quote>
+      <!-- </transition-group> -->
 
       <template v-slot:loading>
         <div v-if="shouldLoad" class="row justify-center q-py-md">
@@ -184,7 +184,7 @@ export default {
           this.slicer = this.slicer + 5;
 
           done();
-        }, 500);
+        }, 250);
       } else {
         this.shouldLoad = false;
         done(true);
@@ -210,7 +210,10 @@ export default {
       this.filteredQuotes = filtered;
     },
     scrollToTop() {
-      document.getElementsByTagName('body')[0].scrollTo(0, 0);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     },
     getTag(tag: string) {
       this.filterCriteria.tagSearch = tag;

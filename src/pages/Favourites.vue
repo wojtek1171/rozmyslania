@@ -38,7 +38,10 @@ export default {
   },
   methods: {
     scrollToTop() {
-      document.getElementsByTagName('body')[0].scrollTo(0, 0);
+      document.getElementsByTagName('body')[0].scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     },
     refresh(done) {
       setTimeout(() => {

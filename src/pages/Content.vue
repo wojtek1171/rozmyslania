@@ -97,7 +97,10 @@ export default {
       //   top: 0,
       //   behavior: 'instant',
       // });
-      document.getElementsByTagName('body')[0].scrollTo(0, 0);
+      document.getElementsByTagName('body')[0].scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     },
     scrollToBottom() {
       window.scrollTo({
