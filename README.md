@@ -49,13 +49,13 @@ yarn format
 npm run format
 ```
 
-### Build the app for production
+### Build the app in PWA mode for production
 
 ```bash
 quasar build -m pwa
 ```
 
-### Start the app
+### Start the app in PWA mode
 
 ```bash
 quasar serve dist/pwa
