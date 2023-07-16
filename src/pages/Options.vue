@@ -8,7 +8,7 @@
 
         <div class="q-pb-md">
           <q-banner class="bg-grey-9 text-white">
-            Czyszczenie ciasteczek i danych witryny przez Twoją przeglądarkę może także usunąć postępy. W celu ich
+            Czyszczenie ciasteczek i danych strony przez Twoją przeglądarkę może także usunąć postępy. W celu ich
             zachowania lub przenoszenia na inne urządzenie, możesz pobrać plik JSON ze swoimi danymi.
           </q-banner>
         </div>
@@ -109,11 +109,13 @@
 import data from 'assets/quotes.json';
 import { ref } from 'vue';
 import { exportFile } from 'quasar';
+import { triggerFavouritesChange } from 'components/favouritesChanged';
 
 export default {
   name: 'OptionsPage',
   data() {
     const quotes: any[] = JSON.parse(JSON.stringify(data));
+    const { favouritesSize } = triggerFavouritesChange();
 
     return {
       confirmFavourites: false,
@@ -122,11 +124,13 @@ export default {
       isImportSucceded: false,
       file: ref(null),
       importAlert: ref(false),
+      favouritesSize,
     };
   },
   methods: {
     deleteFavourites() {
       localStorage.setItem('favourites', '[]');
+      this.favouritesSize = 0;
     },
     deleteChecked() {
       localStorage.setItem('checked', '[]');
@@ -166,6 +170,7 @@ export default {
         localStorage.setItem('checked', parsedFileData.checked);
         this.file = null;
       }
+      this.favouritesSize = parsedFileData.favourites.split(',').length;
       this.importAlert = true;
     },
     checkParsedData(parsedFileData) {

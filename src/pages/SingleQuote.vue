@@ -58,11 +58,9 @@ export default {
       return this.filteredQuotes[0].qid - 1;
     },
     animRight() {
-      //this.animLeave = 'animated slideOutLeft';
       this.animEnter = 'animated slideInRight';
     },
     animLeft() {
-      //this.animLeave = 'animated slideOutRight';
       this.animEnter = 'animated slideInLeft';
     },
     emitAnim() {

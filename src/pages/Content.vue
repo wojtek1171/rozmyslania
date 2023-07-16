@@ -1,6 +1,5 @@
 <template>
   <q-page class="q-pb-xl">
-    <!-- <q-layout> -->
     <q-item-section class="text-h5 text-center text-white text-bold q-pt-lg"> Spis treści </q-item-section>
 
     <div class="q-pt-md text-center text-white text-bold">
@@ -37,10 +36,6 @@
     <q-page-sticky position="bottom-left" :offset="[18, 18]">
       <q-btn round color="grey-9" icon="keyboard_arrow_up" @click="scrollToTop()" />
     </q-page-sticky>
-    <!-- <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
-        <q-btn fab icon="keyboard_arrow_up" color="accent" />
-      </q-page-scroller> -->
-    <!-- </q-layout> -->
   </q-page>
 </template>
 
