@@ -28,7 +28,9 @@
             <a class="link" href="mailto:wojtek1171@proton.me">wojtek1171@proton.me</a>
           </div>
           <div class="q-pb-md">
-            <a class="link" href="https://github.com/wojtek1171/rozmyslania">github.com/wojtek1171/rozmyslania</a>
+            <a class="link" href="https://github.com/wojtek1171/rozmyslania" target="blank"
+              >github.com/wojtek1171/rozmyslania</a
+            >
           </div>
           <q-separator dark />
           <div class="q-py-md text-bold text-white">
@@ -37,7 +39,7 @@
           </div>
 
           <q-card-actions class="q-pb-md" vertical>
-            <a href="https://pl.wikisource.org/wiki/Rozmy%C5%9Blania_(Marek_Aureliusz)/ca%C5%82o%C5%9B%C4%87">
+            <a href="https://buycoffee.to/wojtek.mski" target="blank">
               <q-img class="img4" src="../assets/buycoffeeto.png"></q-img>
             </a>
           </q-card-actions>
@@ -50,6 +52,7 @@
             Aplikacja oparta jest na treści zawartej w "<a
               class="link"
               href="https://wolnelektury.pl/katalog/lektura/rozmyslania-marek-aureliusz/"
+              target="blank"
               >Rozmyślaniach</a
             >" Marka Aureliusza w tłumaczeniu M. Reitera (wyd. Warszawa 1937). Wykorzystany tekst pochodzi z opracowania
             zrealizowanego w ramach projektu
@@ -58,7 +61,7 @@
           </div>
 
           <q-card-actions vertical>
-            <a href="https://wolnelektury.pl">
+            <a href="https://wolnelektury.pl" target="blank">
               <q-img class="img2" src="../assets/wolne-lektury-logo.png"></q-img>
             </a>
           </q-card-actions>
@@ -68,12 +71,13 @@
             <a
               class="link"
               href="https://pl.wikisource.org/wiki/Rozmy%C5%9Blania_(Marek_Aureliusz)/ca%C5%82o%C5%9B%C4%87"
+              target="blank"
               >Wikiźródłach</a
             >
           </div>
 
           <q-card-actions vertical>
-            <a href="https://pl.wikisource.org">
+            <a href="https://pl.wikisource.org" target="blank">
               <q-img class="img1" src="../assets/wiki-logo.png"></q-img>
             </a>
           </q-card-actions>
@@ -81,14 +85,17 @@
           <div class="q-py-md text-bold text-white">
             Treść utworu jest w domenie publicznej, natomiast treść dodatkowa zrealizowana przez Wolne Lektury (wstęp,
             niektóre przypisy, motywy literackie wykorzystane w formie tagów) są udostępnione na
-            <a class="link" href="https://artlibre.org/licence/lal/pl/">Licencji Wolnej Sztuki 1.3</a>
+            <a class="link" href="https://artlibre.org/licence/lal/pl/" target="blank">Licencji Wolnej Sztuki 1.3</a>
           </div>
 
           <q-separator dark />
 
           <div class="q-py-md text-bold text-white">
             Ilustracja na stronie startowej, ikonach i tle:
-            <a class="link" href="https://commons.wikimedia.org/wiki/File:Bronze_Marcus_Aurelius_Louvre.jpg"
+            <a
+              class="link"
+              href="https://commons.wikimedia.org/wiki/File:Bronze_Marcus_Aurelius_Louvre.jpg"
+              target="blank"
               >Bronze Marcus Aurelius Louvre, Waterborough, domena publiczna.</a
             >
           </div>
