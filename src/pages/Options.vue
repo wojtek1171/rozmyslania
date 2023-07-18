@@ -55,6 +55,17 @@
 
         <q-separator dark />
 
+        <q-toggle
+          v-model="drawInUnckecked"
+          size="lg"
+          label="Losuj tylko z nieprzeczytanych"
+          color="blue"
+          unchecked-icon="casino"
+          checked-icon="casino"
+        />
+
+        <q-separator dark />
+
         <q-dialog v-model="confirmChecked">
           <q-card>
             <q-card-section class="text-center items-center">
@@ -114,17 +125,23 @@ import { triggerFavouritesChange } from 'components/favouritesChanged';
 export default {
   name: 'OptionsPage',
   data() {
-    const quotes: any[] = JSON.parse(JSON.stringify(data));
+    //const quotes: any[] = JSON.parse(JSON.stringify(data));
     const { favouritesSize } = triggerFavouritesChange();
+    let drawInUnckecked = false;
+
+    if (localStorage.drawInUnckecked) {
+      drawInUnckecked = JSON.parse(localStorage.drawInUnckecked);
+    }
 
     return {
       confirmFavourites: false,
       confirmChecked: false,
-      quotes,
+      //quotes,
       isImportSucceded: false,
       file: ref(null),
       importAlert: ref(false),
       favouritesSize,
+      drawInUnckecked,
     };
   },
   methods: {
@@ -219,6 +236,13 @@ export default {
   //     deep: true,
   //   },
   // },
+  watch: {
+    drawInUnckecked: {
+      handler() {
+        localStorage.setItem('drawInUnckecked', JSON.stringify(this.drawInUnckecked));
+      },
+    },
+  },
 };
 </script>
 

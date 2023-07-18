@@ -2,7 +2,11 @@
   <q-page class="q-pb-xl">
     <q-item-section class="text-h5 text-center text-white text-bold q-pt-lg"> Spis treści </q-item-section>
 
-    <div class="q-pt-md text-center text-white text-bold">
+    <div class="q-pt-xs text-center text-bold" id="main-chip">
+      <q-chip dense dark> {{ checked.size }} / {{ quotes.length }}</q-chip>
+    </div>
+
+    <div class="q-pt-sm text-center text-white text-bold">
       <q-btn no-caps class="intro" color="grey-10" @click="emitAnim()" to="/intro" label="Wstęp"></q-btn>
     </div>
 

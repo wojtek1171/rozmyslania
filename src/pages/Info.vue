@@ -45,7 +45,7 @@
           </q-card-actions>
         </q-tab-panel>
 
-        <q-tab-panel name="alarms">
+        <q-tab-panel class="panel" name="alarms">
           <div class="text-h6 text-center">Prawa autorskie</div>
           <q-separator dark />
           <div class="q-py-md text-bold text-white">
@@ -109,6 +109,10 @@
         </q-tab-panel>
       </q-tab-panels>
     </div>
+    <q-footer class="footer">
+      <q-separator class="text-center" dark />
+      <div class="text-center">v 1.0.1</div>
+    </q-footer>
   </q-page>
 </template>
 
@@ -164,5 +168,23 @@ export default {
 
 .link:visited {
   color: rgb(80, 163, 211);
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 100vh;
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// html,
+// body {
+//   height: 100%;
+// }
+
+#background {
+  padding-bottom: 0;
 }
 </style>
