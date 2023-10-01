@@ -50,8 +50,14 @@
         ><q-icon name="content_copy" @click="copyToClipboard()"></q-icon
         ><q-popup-proxy :offset="[10, 10]">
           <q-banner dense class="bg-grey-7 text-white"> <div>skopiowano treść do schowka</div> </q-banner>
-        </q-popup-proxy></q-btn
-      >
+        </q-popup-proxy>
+      </q-btn>
+
+      <q-btn flat icon="link" @click="copyLinkToClipboard()">
+        <q-popup-proxy :offset="[10, 10]">
+          <q-banner dense class="bg-grey-7 text-white"> <div>skopiowano link do schowka</div> </q-banner>
+        </q-popup-proxy>
+      </q-btn>
     </q-card-actions>
   </q-card>
   <!-- </q-page> -->
@@ -158,6 +164,11 @@ export default defineComponent({
     },
     copyToClipboard() {
       copyToClipboard(this.quote.text);
+      this.showing = true;
+      setTimeout(() => (this.showing = false), 1000);
+    },
+    copyLinkToClipboard() {
+      copyToClipboard(`${window.location.origin}/#/quote/${this.quote.qid}`);
       this.showing = true;
       setTimeout(() => (this.showing = false), 1000);
     },

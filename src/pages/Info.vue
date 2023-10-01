@@ -111,7 +111,7 @@
     </div>
     <q-footer class="footer">
       <q-separator class="text-center" dark />
-      <div class="text-center">v 1.0.1</div>
+      <div class="text-center">v 1.0.2</div>
     </q-footer>
   </q-page>
 </template>
